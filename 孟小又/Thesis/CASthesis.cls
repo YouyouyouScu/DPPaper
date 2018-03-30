@@ -110,7 +110,7 @@
   \thispagestyle{empty}%
   \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \renewcommand{\floatpagefraction}{0.80}
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \newcommand\CASTspace{\protect\CTEX@spaceChar\protect\CTEX@spaceChar}
 \def\CAST@getfileinfo#1 #2 #3\relax#4\relax{%
   \def\CASTfiledate{#1}%
@@ -379,9 +379,6 @@
            \leftmargin 2\ccwd}
    \item\relax}
   {\endlist}
-\newenvironment{MRRPublications}
-  {\Nchapter{\CAST@label@MRRPublications}}
-  {}
 \newenvironment{resumelist}[1]
   {{\noindent\normalfont\bfseries #1}
    \list{}{\labelwidth\z@
@@ -390,6 +387,15 @@
            \listparindent\itemindent}
    \item\relax}
   {\endlist}
+\newenvironment{MRRPublications}
+  {\Nchapter{\CAST@label@MRRPublications}}
+  {}
+\newenvironment{statement}
+  {\Nchapter{\CAST@label@statement}}
+  {}
+\newenvironment{acknowledgement}
+  {\Nchapter{\CAST@label@acknowledgement}}
+  {}
 \renewenvironment{thanks}
   {\Nchapter{\CAST@label@thanks}}
   {}
