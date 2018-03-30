@@ -379,6 +379,9 @@
            \leftmargin 2\ccwd}
    \item\relax}
   {\endlist}
+\newenvironment{MRRPublications}
+  {\Nchapter{\CAST@label@MRRPublications}}
+  {}
 \newenvironment{resumelist}[1]
   {{\noindent\normalfont\bfseries #1}
    \list{}{\labelwidth\z@
