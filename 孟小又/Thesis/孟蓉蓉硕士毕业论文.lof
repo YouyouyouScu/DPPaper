@@ -1,0 +1,38 @@
+\select@language {english}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces 游戏引擎模拟的体积光和体积雾效果}}{2}{figure.1.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {寒霜引擎体积光}}}{2}{figure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {寒霜引擎体积雾}}}{2}{figure.1.1}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {虚幻引擎体积光}}}{2}{figure.1.1}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {虚幻引擎体积雾}}}{2}{figure.1.1}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces 散射现象过程示意图}}{8}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces 外散射内散射示意图}}{9}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces 光线传播示意图}}{10}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Ray-marching示意图}}{13}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces 阴影产生原因示意图}}{15}{figure.2.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces 阴影瑕疵原理示意图}}{16}{figure.2.6}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces 阴影效果示意图}}{16}{figure.2.7}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {a}}}{16}{figure.2.7}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {b}}}{16}{figure.2.7}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces 算法步骤概要图}}{18}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces 级联阴影图}}{20}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces 视锥体分割图}}{20}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 动态场景中阴影纹理滤波与不滤波对比图}}{21}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces 阴影函数图像对比图}}{22}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces 三维纹理空间映射图}}{24}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces 二维和三维Ray-marching对比}}{25}{figure.3.7}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {二维Ray-marching}}}{25}{figure.3.7}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {三维Ray-marching}}}{25}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces 点光源阴影}}{27}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces 聚光灯图示}}{29}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces 求解散射方程}}{33}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces 渲染结果展示}}{35}{figure.3.11}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {(a)}}}{35}{figure.3.11}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {(b)}}}{35}{figure.3.11}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {(c)}}}{35}{figure.3.11}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {(d)}}}{35}{figure.3.11}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces 存在透明物体的场景下算法的应用}}{36}{figure.3.12}
