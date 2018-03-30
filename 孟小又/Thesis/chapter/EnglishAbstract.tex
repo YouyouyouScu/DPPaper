@@ -1,0 +1,19 @@
+\englishabstract{
+Real-time rendering of large-scale cumulus scene is an important part of outdoor scene simulation. With the widely use of outdoor scene rendering technology  in the field of game entertainment, film animation and virtual reality, film animation and virtual reality, the simulation of large-scale cumulus scene has also become a research hotspot nowadays. However, the traditional cumulus scene simulation methods have always ignored the complex light effect and volume characteristics of the cumulus. They can achieve higher rendering efficiency, but lost reality. Therefore, real-time rendering of the realistic large-scale cumulus scene has always been the research hotspot and key point in the Computer Graphics.
+
+In this paper, we implement a real-time rendering algorithm for large-scale cumulus scene basing on the precomputed illumination algorithm, which obtains higher rendering reality and frame rate. The main idea of this rendering algorithm is to calculate the internal illumination information of the cumulus particles in the unit sphere particle for reference and store the result in a 3D texture, use the nested grid structure with the camera in its center to model the distribution and volume of the cumulus in real time, and sample the 3D illumination texture to color the cloud particle in rendering stage. The modeling algorithm of cumulus scene in this paper can control the level of detail of cumulus at different distances and express the volume of cumulus effectively. The precomputed illumination algorithm also guarantees the character of reality and real-time in our rendering algorithm.
+
+The main works of this paper are summarized as follows:
+
+\begin{enumerate}
+  \item Precompute the illumination information of optical depth and multiple scattering for all possible camera position, view direction and light direction in the unit sphere particle which is separated from the real-time rendering process. It avoids the complex illumination calculation and effectively improves the rendering efficiency under the premise of ensuring high reality.
+  \item Use the nested grid structure with camera in its center to model the distribution of cumulus, and generate the voxel density data of the cumulus scene by the way of the cloud layer basing on the 3D grid structure. Implement a dynamic modeling method for large-scale cumulus scene based on GPU, which effectively control the different level of detail and generate high reality effect of cumulus volume.
+  \item In order to be more realistic, this paper uses the method of linear change on the cloud density texture coordinates to achieve the effect of dynamic growth and dissipation.
+  \item Add the real-time rendering of simple sky background and terrain scene besides the large-scale cumulus scene. The integration of scene effectively improves the rendering reality of the cumulus scene.
+\end{enumerate}
+
+The experimental results show that our real-time rendering algorithm of large-scale cumulus scene all has high realistic rendering results in different visual angles and light environments. The precomputed illumination algorithm not only realizes the complicated illumination model in the cumulus, but also achieves a high frame rate. Because of the GPU dynamic modeling algorithm, we can dynamically change the distribution and the shape of the cumulus during the rendering process. For the situation with denser cumulus scene and more cloud layers, the proposed algorithm can achieve real-time rendering requirements. This paper integrates cumulus, sky and terrain together and gets a good rendering effect and efficiency, which makes our real-time rendering algorithm for large-scale cumulus scene more practical.
+
+\keywords{Large-scale; Cumulus scene; Real-time rendering; Precomputed Lighting; Nested grid structure}
+
+}
