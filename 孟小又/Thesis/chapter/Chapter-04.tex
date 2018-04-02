@@ -37,60 +37,151 @@
   \vspace{3.0mm}
   \begin{tabular}{|c|c|c|c|c|}
   \hline
-    ScatCoeff   & AbsorCoeff      & FogDepth   & FogPhaseAniso    & FogEXPCoe  \\ \cline{1-5}
-           0.03 & 0.01            & 10000            & 0.2               & 200  \\ \cline{1-5}
-    FogSpeed   & Octaves & Lacunarity & Gain        & ScreenRes       \\ \cline{1-5}
-    1.9        &  2       & 2.0       & 0.5         & $1280*720$ \\ \cline{1-5}
+    ScatCoeff   & AbsorCoeff      & FogDepth   & FogPhaseAniso    & ScreenRes  \\ \cline{1-5}
+           0.03 & 0.01            & 10000            & 0.2               & $1280*720$  \\ \cline{1-5}
   \end{tabular}
 \end{table}
 \subsection{不同密度的体积雾和体积光渲染效果展示}
-实验目的：本文算法将密度作为散射光线计算的输入参数，不同的密度分布可以模拟出不同形态的体积光和体积雾。本文支持的密度输入在章节\ref{DensityGensect}中有详细的介绍，通过渲染不同密度下的雾效和体积光，证明本文算法可以支持多种形态的雾和体积光的处理。
+实验目的：本文算法将密度作为散射光线计算的输入参数，不同的密度分布可以模拟出不同形态的体积光和体积雾。本文支持的密度输入在章节\ref{DensityGensect}中有详细的介绍，通过渲染不同密度分布下的雾效和体积光，证明本文算法可以支持多种形态的雾和体积光的处理。
 
 
-实验输入数据：输入三组不同密度，第一组，不同的均匀密度的雾，第二组，三维柏林噪声生成的密度，默认参数如表\ref{tableExperimentParameters}所示，通过调整柏林噪声生成的参数，调整雾的分布，第三组，由三维纹理输入的烟雾的密度分布。
+实验输入数据：输入三组不同密度，第一组，均匀密度的雾，本次实验生成两种均匀密度的雾，第一种密度为0.8， 第二章密度为1.0；第二组，密度分布由数学函数模拟，数学函数如所示，参数。。控制雾的衰减强度，密度分布的主要影响因素为高度；第三组，生成三维柏林噪声纹理干扰雾的分布，纹理的输入参数如表所示，纹理图像如图所示。在本次实验中，其他默认参数如表\ref{tableExperimentParameters} 所示。
 
 
-结果输出：
-
-
-实验结果分析：
-
-
-\subsection{不同光源下体积雾和体积光的渲染效果展示}
-实验目的：
-
-
-实验输入数据：
-
-
-结果输出：
+结果输出：均匀密度的雾如图\ref{pic-avgDenRe}所示，函数模拟的密度分布生成的雾
+如图\ref{pic-funexpRe} 所示，由不同三维柏林噪声生成的雾如图\ref{pic-perlinRe}所示。
 
 
 实验结果分析：
+本文实现了三种不同密度分布的雾和体积光的渲染，第一种为均匀密度，雾和体积光的渲染效果各项同性，雾的浓度只和深度有关，相同密度下，每等厚层的雾的浓度相同；第二种雾的效果和公式\ref{eq:Density}有关，总体分布为随着高度的上升，雾的密度越小，浓度越低。系数$D$为400时，雾的浓度随着高度的衰减更加缓和，系数$D$为200时，雾的浓度随着高度的衰减更加剧烈；第三种雾的密度分布受柏林噪声纹理的干扰，柏林噪声纹理的分布主要受三个参数影响，频率参数控制柏林噪声的波动情况，频率越大，波动越剧烈，振幅参数控制柏林噪声数值的波动范围，为了让密度分布看起来更加自然，我们会使用几个柏林噪声函数混合得到最终的结果，倍频参数控制柏林噪声函数计算的次数，倍频越大，计算次数越多，频率和振幅因为多个函数的叠加也会有所上升，密度分布更加无序。通过不同密度分布的场景渲染效果对比可知，用柏林噪声纹理干扰雾的分布后，雾的效果看上去更加自然。
+\begin{figure*}[!htb]
+\makeatletter
+\renewcommand{\@thesubfigure}{\hskip\subfiglabelskip}
+\makeatother
+    \centering
+    \subfigure[密度=1时雾的效果图]{
+    \includegraphics[width=0.45\textwidth, height=4.5cm]{figures/density1}}
+    \subfigure[密度=0.8时雾的效果图]{
+    \includegraphics[width=0.45\textwidth, height=4.5cm]{figures/density35}}
+        \subfigure[密度=1时体积光效果图]{
+    \includegraphics[width=0.45\textwidth, height=4.5cm]{figures/VL2}}
+    \subfigure[密度=0.8时体积光效果图]{
+    \includegraphics[width=0.45\textwidth, height=4.5cm]{figures/VL1}}
+    \caption{均匀密度的雾和体积光}
+    \label{pic-avgDenRe}
+\end{figure*}
+
+\begin{figure*}[!htb]
+\makeatletter
+\renewcommand{\@thesubfigure}{\hskip\subfiglabelskip}
+\makeatother
+    \centering
+    \subfigure[D=400时雾的效果图]{
+    \includegraphics[width=0.45\textwidth, height=4.5cm]{figures/funexp200}}
+    \subfigure[D=200时雾的效果图]{
+    \includegraphics[width=0.45\textwidth, height=4.5cm]{figures/funexp400}}
+    \caption{指数分布密度的雾}
+    \label{pic-funexpRe}
+\end{figure*}
+
+\begin{figure*}[!htb]
+\makeatletter
+\renewcommand{\@thesubfigure}{\hskip\subfiglabelskip}
+\makeatother
+    \centering
+    \subfigure[柏林噪声分布图1]{
+    \includegraphics[width=0.45\textwidth, height=6.0cm]{figures/PerlinNoiseRebig}}
+    \subfigure[柏林噪声分布图2]{
+    \includegraphics[width=0.45\textwidth, height=6.0cm]{figures/PerlinNoiseResmall}}
+    \subfigure[柏林噪声分布图1对应的雾的效果图]{
+    \includegraphics[width=0.45\textwidth, height=5.5cm]{figures/perlinRebig}}
+    \subfigure[柏林噪声分布图2对应的雾的效果图]{
+    \includegraphics[width=0.45\textwidth, height=5.5cm]{figures/perlinResmall}}
+    \caption{柏林噪声密度的雾}
+    \label{pic-perlinRe}
+\end{figure*}
+
+\subsection{不同光源下渲染效果展示和效率对比}
+实验目的：本节实验设计的主要目的是验证本文算法能够兼容具有不同类型的光源和多光源的场景。验证在不同类型光源的场景中本文算法的正确性，同时验证多光源场景下本文算法的效率没有太大波动，算法稳定性较好。
+
+
+实验输入数据：本节实验中，输入不同顶点数和三角面片数的场景，场景数据
+如表\ref{tableSceneData}所示，以及不同类型的光源。其他输入参数
+如表\ref{tableExperimentParameters}所示。
+
+
+结果输出：不同光源类型场景的渲染效果如图\ref{pic-multilightRe}所示，每个场景的效率对比如表\ref{tableMultilightSceneFPS}所示。
+
+
+实验结果分析：
+图\ref{pic-multilightRe}展示了每种类型光源下以及多种光源下雾和体积光的效果，可以看出，本文算法在不同类型光源场景下均有正确的渲染效果。图四为同时存在平行光和点光源的场景渲染效果图，为了将点光源和平行光区分，点光源光线为红色。
+表\ref{tableMultilightSceneFPS}中场景的数据如表\ref{tableSceneData}所示，
+由表\ref{tableMultilightSceneFPS}可知，随着场景复杂度的提高，场景的渲染效率会降低，但是在最复杂的场景中，本文算法的渲染帧率在60帧以上，满足实时渲染的要求。在光源增加时，多个光源阴影贴图的生成会导致渲染效率的下降，光照计算量也线性增加，但是本文算法将光照计算部分使用计算着色器处理，弱化这个部分对效率的影响（这部分效率对比在章节\ref{compute_2dCom}中有详细说明），总体来说，本文算法每增加一个光源对效率的影响控制在百分之10左右，这个下降比率在可接受范围以内，此外四个光源的复杂场景中，帧率在60帧以上。
+\begin{table}[htbp]
+  \centering
+  \caption{实验场景基本数据}
+  \label{tableSceneData}
+  \vspace{3.0mm}
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+                & 场景一   & 场景二   & 场景三   \\ \cline{1-4}
+         顶点数 & 145185   & 483217   & 893544   \\ \cline{1-4}
+   三角形面片数 & 262267   & 645947   & 1297686  \\ \cline{1-4}
+  \end{tabular}
+\end{table}
+
+\begin{figure*}[!htb]
+\makeatletter
+\renewcommand{\@thesubfigure}{\hskip\subfiglabelskip}
+\makeatother
+    \centering
+    \subfigure[单个点光源渲染效果图]{
+    \includegraphics[width=0.45\textwidth, height=5cm]{figures/onePointlight}}
+    \subfigure[单个聚光灯渲染效果图]{
+    \includegraphics[width=0.45\textwidth, height=5cm]{figures/oneSpotlight}}
+    \subfigure[平行光渲染效果图]{
+    \includegraphics[width=0.45\textwidth, height=5cm]{figures/Dirlight}}
+    \subfigure[平行光和点光源渲染效果图]{
+    \includegraphics[width=0.45\textwidth, height=5cm]{figures/multilightRe1}}
+    \caption{不同光源类型渲染效果图}
+    \label{pic-multilightRe}
+\end{figure*}
+
+\begin{table}[htbp]
+  \centering
+  \caption{不同场景不同光源数目的渲染帧率对比}
+  \label{tableMultilightSceneFPS}
+  \vspace{3.0mm}
+  \begin{tabular}{|c|c|c|c|c|}
+  \hline
+  \diagbox{场景}{帧率}{光源数}& 1        & 2        & 3       & 4      \\ \cline{1-5}
+                       场景一 & 60       & 60       & 60      & 60     \\ \cline{1-5}
+                       场景二 & 60       & 60       & 60      & 60     \\ \cline{1-5}
+                       场景三 & 60       & 60       & 60      & 60     \\ \cline{1-5}
+  \end{tabular}
+\end{table}
 
 \subsection{带有透明物体的场景的雾效和体积光的渲染}
 
-实验目的：
+实验目的：本节实验设计的主要目的是验证本文算法能够兼容带有透明物体的场景，通过渲染效果图验证本文算法的正确性。
 
 
-实验输入数据：
+实验输入数据：本节实验的输入数据为不透明场景和不同复杂度的透明物体。场景中透明物体的顶点数，三角形面片数如表所示，其他输入参数如表所示。
 
 
-结果输出：
+结果输出：从不同的视点得到不同透明物体的雾和体积光的渲染效果如图所示。
 
 
 实验结果分析：
 
 \subsection{使用计算着色器和片元着色器渲染效率对比}
-\label{computeSpeedcompare}
-
-实验目的：
-
-
-实验输入数据：
+\label{compute_2dCom}
+实验目的：本节实验设计的主要目的是验证本文算法使用计算着色器进行光照计算比原有的片元着色器效率更高，使用不同复杂度的场景进行实验验证。
 
 
-结果输出：
+实验输入数据：本节实验的数据是不同复杂度的场景和不同的光源数量的场景，输入的场景数据如表所示。
+
+结果输出：本文算法和原有的片元着色器处理雾的算法的效率对比如图所示。
 
 
 实验结果分析：
@@ -98,20 +189,20 @@
 
 \subsection{本文算法阴影算法和常见阴影算法效果对比}
 
-实验目的：
+实验目的：本节实验设计的主要目的是验证本文算法使用的阴影算法生成体积光的效果，比原有的级联阴影生成体积光的效果更好，边缘处理更加平滑。
 
 
-实验输入数据：
+实验输入数据：本节实验输入数据为不同的视线和平行光光源，生成不同观察视角下的阴影和体积光的效果。
 
 
-结果输出：
+结果输出：三个视角下，原始的级联阴影贴图如如所示，使用ESM算法优化后的阴影贴图如图所示，最终渲染的体积光的效果对比如图所示。
 
 
 实验结果分析：
 
 
 \section{本文算法局限性分析}
-
+本文模拟雾和体积光的算法，采用计算着色器处理复杂的光照计算，并将这个步骤从光线跟踪步骤中解耦出来，中间结果保存在三维纹理中，可以供后续渲染雾和体积光使用，在体积光的模拟中，对阴影算法进行改进，使体积光的边缘更加平滑，减少边缘产物。该算法取得了较好的雾和体积光的渲染效果和实时的帧率。但是本文算法
 
 \section{本章小节}
 本章首先概述了本文实验设计的主要内容与基本目标，简单地介绍了所有实验采用的软硬件环境；然后从不同密度分布、不同复杂度的场景，分别设计实验对雾和体积光的渲染效果进行展示与对比分析；接着，针对本文算法中使用的计算着色器处理雾和体积光效率和在片元着色器中渲染雾和体积光的效率进行对比和分析，最后验证体积光的渲染中本文算法使用的阴影算法与常见阴影算法的效果对比，验证了本文算法对雾和体积光的模拟的真实性和高效性；最后对本文算法存在的局限性进行了简要的总结和分析。
